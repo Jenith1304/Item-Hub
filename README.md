@@ -2,7 +2,7 @@
 
 This is a full-stack **Item Management Web Application** built using **React**, **Node.js**, **Express**, and **MongoDB**, with **Cloudinary** integration for image hosting and **SMTP (Nodemailer)** support for enquiry emails. The app allows users to **add items** with images and **view uploaded items** with full details.
 
-> 📦 Hosted on: [Render](https://render.com)
+> 📦 **Hosted** on: **[Render]**((https://item-hub-tenk.onrender.com/))
 
 ---
 
