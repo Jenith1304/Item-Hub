@@ -9,29 +9,29 @@ const enquiryRoutes = require('./routes/enquiryRoutes');
 
 const app = express();
 
-
+// Middleware
 app.use(cors());
 app.use(express.json());
-
-// Static files
-const uploadsPath = path.join(__dirname, 'uploads');
-app.use('/uploads', express.static(uploadsPath));
 
 // API Routes
 app.use('/api/items', itemRoutes);
 app.use('/api/enquire', enquiryRoutes);
 
-//FRONTEND Fallback
-app.use(express.static(path.join(__dirname, 'client')));
+// Serve React frontend
+app.use(express.static(path.join(__dirname, 'client', 'build')));
+
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client', 'index.html'));
+  res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
 });
 
 // Connect DB and start server
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
-}).then(() => {
+})
+.then(() => {
   console.log(' MongoDB Connected');
-  app.listen(process.env.PORT || 5000, () => console.log('Server running'));
-}).catch(err => console.error(' DB Error:', err));
+  const port = process.env.PORT || 5000;
+  app.listen(port, () => console.log(` Server running on port ${port}`));
+})
+.catch(err => console.error(' DB Connection Error:', err));

@@ -32,7 +32,7 @@ function ItemModal({ item, onClose }) {
                 {[item.coverImage, ...item.additionalImages].map((img, index) => (
                   <div className={`carousel-item ${index === 0 ? 'active' : ''}`} key={index}>
                     <img
-                      src={`http://localhost:5000/uploads/${img}`}
+                      src={img} 
                       className="d-block w-100"
                       alt={`img-${index}`}
                       style={{ maxHeight: '400px', objectFit: 'contain' }}
