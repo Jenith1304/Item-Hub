@@ -9,6 +9,7 @@ const enquiryRoutes = require('./routes/enquiryRoutes');
 
 const app = express();
 
+
 // Middleware
 app.use(cors());
 app.use(express.json());
@@ -17,12 +18,12 @@ app.use(express.json());
 app.use('/api/items', itemRoutes);
 app.use('/api/enquire', enquiryRoutes);
 
-// Serve React frontend
-app.use(express.static(path.join(__dirname, 'client', 'build')));
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+app.use(express.static(path.join(__dirname, '../frontend/dist')));
+app.all('/{*any}', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
 });
+
 
 // Connect DB and start server
 mongoose.connect(process.env.MONGO_URI, {
