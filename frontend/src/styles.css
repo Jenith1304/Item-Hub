@@ -1,0 +1,30 @@
+.item-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .item-card {
+    width: 200px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    padding: 1rem;
+  }
+  
+  .modal {
+    position: fixed;
+    top: 10%;
+    left: 10%;
+    width: 80%;
+    height: 80%;
+    background: white;
+    padding: 1rem;
+    overflow: auto;
+    border: 2px solid #000;
+  }
+  
+  .carousel img {
+    width: 100px;
+    margin: 0.5rem;
+  }
+  
